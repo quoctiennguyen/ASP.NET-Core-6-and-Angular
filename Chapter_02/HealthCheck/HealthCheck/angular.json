@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -97,6 +98,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -105,5 +107,8 @@
       }
     }
   },
-  "defaultProject": "HealthCheck"
+  "defaultProject": "HealthCheck",
+  "cli": {
+    "analytics": "eb62aa8c-865f-4d0e-9b15-1fa1a5a5bdcf"
+  }
 }
