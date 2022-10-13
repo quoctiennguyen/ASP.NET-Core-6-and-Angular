@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HealthCheckAPI.Data;
 using HealthCheckAPI.Data.Models;
-
+using System.Linq.Dynamic.Core;
 namespace HealthCheckAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -24,13 +24,19 @@ namespace HealthCheckAPI.Controllers
         // GET: api/Cities
         [HttpGet]
         public async Task<ActionResult<ApiResult<City>>> GetCities(int pageIndex = 0,
-            int pageSize = 10)
+            int pageSize = 10, string? sortColumn = null,
+            string? sortOrder = null,
+            string? filterColumn = null,
+            string? filterQuery = null)
         {
             return await ApiResult<City>.CreateAsync(
-                _context.Cities.AsNoTracking(),
+                    _context.Cities.AsNoTracking(),
                 pageIndex,
-                pageSize
-            );
+                pageSize,
+                sortColumn,
+                sortOrder,
+                filterColumn,
+                filterQuery);
         }
 
         // GET: api/Cities/5
