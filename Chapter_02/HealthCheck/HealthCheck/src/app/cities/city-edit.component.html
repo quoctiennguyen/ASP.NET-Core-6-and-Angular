@@ -9,6 +9,9 @@
       <input matInput formControlName="name" required
              placeholder="Type a name">
     </mat-form-field>
+    <mat-error *ngIf="this.form.controls['name'].errors?.['required']">
+      Name is required.
+    </mat-error>
 
     <!-- Lat -->
     <mat-form-field>
@@ -16,6 +19,9 @@
       <input matInput formControlName="lat" required
              placeholder="Insert latitude">
     </mat-form-field>
+    <mat-error *ngIf="this.form.controls['lat'].errors?.['required']">
+      Lat is required.
+    </mat-error>
 
     <!-- Lon -->
     <mat-form-field>
@@ -23,6 +29,9 @@
       <input matInput formControlName="lon" required
              placeholder="Insert longitude">
     </mat-form-field>
+    <mat-error *ngIf="this.form.controls['lon'].errors?.['required']">
+      Lon is required.
+    </mat-error>
 
     <!-- Country -->
     <mat-form-field *ngIf="countries">
@@ -34,7 +43,9 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-
+    <mat-error *ngIf="this.form.controls['countryId'].errors?.['required']">
+      Please select a Country.
+    </mat-error>
     <div>
       <button mat-flat-button color="primary" type="submit">
         {{ this.id ? "Save" : "Create" }}
