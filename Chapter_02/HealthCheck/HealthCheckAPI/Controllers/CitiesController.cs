@@ -23,7 +23,8 @@ namespace HealthCheckAPI.Controllers
 
         // GET: api/Cities
         [HttpGet]
-        public async Task<ActionResult<ApiResult<City>>> GetCities(int pageIndex = 0,
+        public async Task<ActionResult<ApiResult<City>>> GetCities(
+            int pageIndex = 0,
             int pageSize = 10, string? sortColumn = null,
             string? sortOrder = null,
             string? filterColumn = null,

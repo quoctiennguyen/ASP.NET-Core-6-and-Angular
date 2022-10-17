@@ -40,5 +40,6 @@ namespace HealthCheckAPI.Data.Models
         /// </summary>
         public ICollection<City>? Cities { get; set; } = null!;
         #endregion
+
     }
 }
