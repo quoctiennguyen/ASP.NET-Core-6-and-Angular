@@ -9,16 +9,17 @@ import { map } from 'rxjs/operators';
 import { environment } from './../../environments/environment';
 import { Country } from './country';
 
+import { BaseFormComponent } from '../base-form.component'
+
 @Component({
   selector: 'app-country-edit',
   templateUrl: './country-edit.component.html',
   styleUrls: ['./country-edit.component.scss']
 })
-export class CountryEditComponent implements OnInit {
+export class CountryEditComponent extends BaseFormComponent implements OnInit {
   // the view title
   title?: string;
-  // the form model
-  form!: FormGroup;
+
   // the country object to edit or create
   country?: Country;
   // the country object id, as fetched from the active route:
@@ -33,6 +34,7 @@ export class CountryEditComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private http: HttpClient) {
+      super();
   }
 
   ngOnInit() {
@@ -128,29 +130,5 @@ export class CountryEditComponent implements OnInit {
           return (result ? { isDupeField: true } : null);
         }));
     }
-  }
-
-  getErrors(
-    control: AbstractControl,
-    displayName: string,
-  ): string[] {
-    var errors: string[] = [];
-    Object.keys(control.errors || {}).forEach((key) => {
-      switch (key) {
-      case 'required':
-        errors.push('${displayName} is required.');
-        break;
-      case 'pattern':
-        errors.push('${displayName} contains invalid characters.');
-        break;
-      case 'isDupeField':
-        errors.push('${displayName} already exists: please choose another.');
-        break;
-      default:
-        errors.push('${displayName} is invalid.');
-        break;
-      }
-    });
-    return errors;
   }
 }
