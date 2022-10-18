@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { BaseFormComponent } from '../base-form.component'
-
+import { CityService } from './city.service';
+import { ApiResult } from '../base.service';
 @Component({
   selector: 'app-city-edit',
   templateUrl: './city-edit.component.html',
@@ -20,7 +21,8 @@ export class CityEditComponent extends BaseFormComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private http: HttpClient) {
+    private http: HttpClient,
+    private cityService: CityService) {
     super();
   }
 
@@ -104,9 +106,7 @@ export class CityEditComponent extends BaseFormComponent implements OnInit {
 
       if (this.id) {
         // EDIT mode
-        var url = environment.baseUrl + 'api/Cities/' + city.id;
-        this.http
-          .put<City>(url, city)
+        this.cityService.put(city)
           .subscribe(result => {
             console.log("City " + city!.id + " has been updated.");
             // go back to cities view
@@ -115,9 +115,8 @@ export class CityEditComponent extends BaseFormComponent implements OnInit {
       }
       else {
         // ADD NEW mode
-        var url = environment.baseUrl + 'api/Cities';
-        this.http
-          .post<City>(url, city)
+        this.cityService
+          .post(city)
           .subscribe(result => {
             console.log("City " + result.id + " has been created.");
             // go back to cities view
