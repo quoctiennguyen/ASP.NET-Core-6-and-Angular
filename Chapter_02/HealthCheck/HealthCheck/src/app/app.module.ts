@@ -12,7 +12,7 @@ import { CountriesComponent } from './countries/countries.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CityEditComponent } from './cities/city-edit.component';
 import { CountryEditComponent } from './countries/country-edit.component';
-//import { CityService } from './cities/city.service';
+import { LoginComponent } from './auth/login.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +22,13 @@ import { CountryEditComponent } from './countries/country-edit.component';
     CitiesComponent,
     CountriesComponent,
     CityEditComponent,
-    CountryEditComponent
+    CountryEditComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, AppRoutingModule, BrowserAnimationsModule, AngularMaterialModule, ReactiveFormsModule
   ],
   providers: [ ],
-  //providers: [CityService], // only need with old angular, the new way in inject with attribute providedIn
   bootstrap: [AppComponent]
 })
 export class AppModule { }

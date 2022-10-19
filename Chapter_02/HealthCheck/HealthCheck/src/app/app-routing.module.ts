@@ -5,9 +5,12 @@ import { CitiesComponent } from './cities/cities.component';
 import { CountriesComponent } from './countries/countries.component';
 import { CityEditComponent } from './cities/city-edit.component';
 import { CountryEditComponent } from './countries/country-edit.component';
+import { LoginComponent } from './auth/login.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
+
+  { path: 'login', component: LoginComponent },
 
   { path: 'cities', component: CitiesComponent },
   { path: 'city', component: CityEditComponent },
